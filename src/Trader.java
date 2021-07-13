@@ -1,7 +1,5 @@
 public class Trader {
-//    public int potion(int cost, int life) {
-//        if (cost >= 20) {
-//
-//        }
-//    }
+    public void potion(Character hero) {
+        hero.setGold(hero.getGold() - 50);
+    }
 }

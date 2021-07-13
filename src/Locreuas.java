@@ -17,26 +17,38 @@ public class Locreuas {
         Fight fight = new Fight();
         boolean game = true;
 
+        // buy onion
+        Trader addLife = new Trader();
+        boolean isPotion = false;
+
         Character monster;
         // let's go
         while (game) {
 
             // choose monster
-            int random = (int) Math.random();
-            if(random % 2 == 0) {
+            int random = (int) (Math.random() * 10);
+            if (random % 2 == 0) {
                 monster = goblin;
             } else {
-                monster = hero;
+                monster = skelleton;
             }
 
+            System.out.println("Куда пойдем?");
+            System.out.println("1. К торговцу\n2. В темный лес\n3. На выход");
             // choose the way
             int way = scan.nextInt();
             switch (way) {
                 case 1:
                     System.out.println("Тогда пойдемте к торговцу.");
+                    addLife.potion(hero);
+                    System.out.println("Оставшиеся деньги после покупки зелья:" + hero.getGold());
+                    isPotion = true;
+                    break;
                 case 2:
                     System.out.println("Сражайтесь, раз уж пошли в темный лес.");
-                    fight.FightResult(hero, monster);
+                    fight.FightResult(hero, monster, isPotion);
+                    game = false;
+                    break;
                 case 3:
                     System.out.println("До встречи!");
                     game = false;
