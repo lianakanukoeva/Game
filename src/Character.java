@@ -1,4 +1,6 @@
-abstract public class Character {
+import java.util.Random;
+
+public class Character implements Attack {
     String name;
     int life, power, dexterity, experience, gold;
     public Character(String name, int life, int power, int dexterity, int experience, int gold) {
@@ -10,8 +12,9 @@ abstract public class Character {
         this.gold = gold;
     }
 
-    public int hit(){
-        return 0;
+    public int hit() {
+        if (dexterity * 3 < Math.random() * 100) return power;
+        else return 0;
     }
 
     public void setName(String name) {
